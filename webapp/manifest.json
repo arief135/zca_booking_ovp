@@ -162,7 +162,8 @@
                     "entitySet": "SBook",
                     "title": "Booking",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Booking",
-                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#Booking"
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#Booking",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#Booking"
                 }
             },
             "Booking2": {

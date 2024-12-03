@@ -69,9 +69,21 @@
                 <Annotation Term="UI.DataPoint" Qualifier="Booking">
                     <Record Type="UI.DataPointType">
                         <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information" />
+                        <PropertyValue Property="Description" String="Desc"/>
                         <PropertyValue Property="Value" Path="NumberOfBooking" />
                     </Record>
                 </Annotation>
+
+                <Annotation Term="UI.Identification" Qualifier="Booking">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ZPMCustGUI" />
+                            <PropertyValue Property="Action" String="ZPMR008" />
+                            <PropertyValue Property="RequiresContext" Bool="false" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+
             </Annotations>
         </Schema>
     </edmx:DataServices>
