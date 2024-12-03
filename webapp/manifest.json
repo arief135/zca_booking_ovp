@@ -164,6 +164,17 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Booking",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#Booking"
                 }
+            },
+            "Booking2": {
+                "template": "sap.ovp.cards.charts.analytical",
+                "model": "ZC_SBOOKQUERY_CDS",
+                "settings": {
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Booking2",
+                    "entitySet": "ZC_SBOOKQUERY",
+                    "title": "Booking 2",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#Booking2",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#Booking2"
+                }
             }
         },
         "chartSettings": {}

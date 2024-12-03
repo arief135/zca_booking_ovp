@@ -1,80 +1,78 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
     </edmx:Reference>
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
     </edmx:Reference>
     <edmx:Reference Uri="/sap/opu/odata/sap/ZUI_SBOOK/$metadata">
-        <edmx:Include Namespace="cds_zui_sbook"/>
+        <edmx:Include Namespace="cds_zui_sbook" />
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
-
-<Annotations Target="cds_zui_sbook.SBookType">
-    <Annotation Term="UI.SelectionFields" >
-        <Collection>
-            <PropertyPath>Carrid</PropertyPath>
-            <PropertyPath>Connid</PropertyPath>
-        </Collection>
-    </Annotation>
-    <Annotation Term="UI.Chart" Qualifier="Booking">
-        <Record Type="UI.ChartDefinitionType">
-            <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
-            <PropertyValue Property="Dimensions">
-                <Collection>
-                    <PropertyPath>Carrid</PropertyPath>
-                </Collection>
-            </PropertyValue>
-            <PropertyValue Property="DimensionAttributes">
-                <Collection>
-                    <Record Type="UI.ChartDimensionAttributeType">
-                        <PropertyValue Property="Dimension" PropertyPath="Carrid"/>
-                        <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+            <Annotations Target="cds_zui_sbook.SBookType">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Carrid</PropertyPath>
+                        <PropertyPath>Connid</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="Booking">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut" />
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Carrid</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="Carrid" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>NumberOfBooking</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="NumberOfBooking" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
                     </Record>
-                </Collection>
-            </PropertyValue>
-            <PropertyValue Property="Measures">
-                <Collection>
-                    <PropertyPath>NumberOfBooking</PropertyPath>
-                </Collection>
-            </PropertyValue>
-            <PropertyValue Property="MeasureAttributes">
-                <Collection>
-                    <Record Type="UI.ChartMeasureAttributeType">
-                        <PropertyValue Property="Measure" PropertyPath="NumberOfBooking"/>
-                        <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="Booking">
+                    <Record>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#Booking</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Carrid" />
+                                    <PropertyValue Property="Descending" Bool="true" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MaxItems" Int="5" />
                     </Record>
-                </Collection>
-            </PropertyValue>
-        </Record>
-    </Annotation>
-    <Annotation Term="UI.PresentationVariant" Qualifier="Booking">
-        <Record>
-            <PropertyValue Property="Visualizations">
-                <Collection>
-                    <AnnotationPath>@UI.Chart#Booking</AnnotationPath>
-                </Collection>
-            </PropertyValue>
-            <PropertyValue Property="SortOrder">
-                <Collection>
-                    <Record Type="Common.SortOrderType">
-                        <PropertyValue Property="Property" PropertyPath="Carrid"/>
-                        <PropertyValue Property="Descending" Bool="true"/>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Booking">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information" />
+                        <PropertyValue Property="Value" Path="NumberOfBooking" />
                     </Record>
-                </Collection>
-            </PropertyValue>
-            <PropertyValue Property="MaxItems" Int="5"/>
-        </Record>
-    </Annotation>
-    <Annotation Term="UI.DataPoint" Qualifier="Booking">
-        <Record Type="UI.DataPointType">
-            <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information"/>
-            <PropertyValue Property="Value" Path="NumberOfBooking"/>
-        </Record>
-    </Annotation>
-</Annotations>
-
+                </Annotation>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
