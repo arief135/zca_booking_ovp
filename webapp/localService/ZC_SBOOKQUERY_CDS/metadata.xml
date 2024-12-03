@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_SBOOKQUERY_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_SBOOKQUERYType" sap:label="ZC_SBookQuery" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:label="Agency No." sap:quickinfo="Travel Agency Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:label="Booking number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Class" sap:quickinfo="Flight Class" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Connection Number" sap:quickinfo="Flight Connection Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:label="Sales office" sap:quickinfo="Number of sales office" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:label="Customer Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="B/P customer" sap:quickinfo="Customer type" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Flight Date" sap:quickinfo="Flight date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="Fldate_T" Type="Edm.String" MaxLength="10" sap:label="Flight Date (Description)" sap:quickinfo="Flight date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Paymnt currency" sap:quickinfo="Payment currency" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Airline Currency" sap:quickinfo="Local currency of airline" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Posting date" sap:quickinfo="Booking Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="OrderDate_T" Type="Edm.String" MaxLength="10" sap:label="Posting date (Description)" sap:quickinfo="Booking Date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="DOB of Passenger" sap:quickinfo="Date of Birth of a Passenger" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="Passbirth_T" Type="Edm.String" MaxLength="10" sap:label="DOB of Passenger (Description)" sap:quickinfo="Date of Birth of a Passenger" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:label="Form of address" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:aggregation-role="dimension" sap:label="Passenger Name" sap:quickinfo="Name of the Passenger" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Reserved" sap:quickinfo="Reservation flag" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unit of Measurement" sap:quickinfo="Unit of Weight" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="unit-of-measure"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:text="Carrid_T" sap:label="Airline" sap:quickinfo="Airline Code" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Carrid_T" Type="Edm.String" MaxLength="1333" sap:label="Airline (Description)" sap:quickinfo="Airline Code" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Luggweight" Type="Edm.Decimal" Precision="42" Scale="3" sap:aggregation-role="measure" sap:filterable="false" sap:text="Luggweight_F" sap:unit="Luggweight_E" sap:updatable="false" sap:label="Luggage Weight" sap:quickinfo="Weight of Luggage" sap:creatable="false"/>
+                <Property Name="Luggweight_F" Type="Edm.String" MaxLength="60" sap:label="Luggage Weight (Formatted)" sap:quickinfo="Weight of Luggage" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Luggweight_E" Type="Edm.String" MaxLength="3" sap:filterable="false" sap:label="Luggage Weight (Unit)" sap:quickinfo="Weight of Luggage" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Forcuram" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="Forcuram_F" sap:unit="Forcuram_E" sap:updatable="false" sap:label="Amount" sap:quickinfo="Booking price in foreign currency (dependent on location)" sap:creatable="false"/>
+                <Property Name="Forcuram_F" Type="Edm.String" MaxLength="60" sap:label="Amount (Formatted)" sap:quickinfo="Booking price in foreign currency (dependent on location)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Forcuram_E" Type="Edm.String" MaxLength="5" sap:filterable="false" sap:label="Amount (Currency)" sap:quickinfo="Booking price in foreign currency (dependent on location)" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="Loccuram" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="Loccuram_F" sap:unit="Loccuram_E" sap:updatable="false" sap:label="Amount (loc.currncy)" sap:quickinfo="Price of booking in local currency of airline" sap:creatable="false"/>
+                <Property Name="Loccuram_F" Type="Edm.String" MaxLength="60" sap:label="Amount (loc.currncy) (Formatted)" sap:quickinfo="Price of booking in local currency of airline" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Loccuram_E" Type="Edm.String" MaxLength="5" sap:filterable="false" sap:label="Amount (loc.currncy) (Currency)" sap:quickinfo="Price of booking in local currency of airline" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="NumberOfBooking" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="NumberOfBooking_F" sap:updatable="false" sap:label="Number of Bookings" sap:creatable="false"/>
+                <Property Name="NumberOfBooking_F" Type="Edm.String" MaxLength="60" sap:label="Number of Bookings (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Cancelled" sap:label="Cancelation flag (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cancelled_ID"/>
+                </Key>
+                <Property Name="Cancelled_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="CancelledText" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CancelledText" Type="Edm.String" sap:label="Cancelation flag (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="CancelledResult" sap:label="Cancelation flag (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cancelled"/>
+                </Key>
+                <Property Name="Cancelled" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Class" sap:label="Class (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Class_ID"/>
+                </Key>
+                <Property Name="Class_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="ClassText" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ClassText" Type="Edm.String" sap:label="Class (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ClassResult" sap:label="Class (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Class"/>
+                </Key>
+                <Property Name="Class" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Custtype" sap:label="B/P customer (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Custtype_ID"/>
+                </Key>
+                <Property Name="Custtype_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="CusttypeText" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CusttypeText" Type="Edm.String" sap:label="B/P customer (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="CusttypeResult" sap:label="B/P customer (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Custtype"/>
+                </Key>
+                <Property Name="Custtype" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Forcurkey" sap:label="Paymnt currency (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Forcurkey_ID"/>
+                </Key>
+                <Property Name="Forcurkey_ID" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="ForcurkeyText" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ForcurkeyText" Type="Edm.String" sap:label="Paymnt currency (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ForcurkeyResult" sap:label="Paymnt currency (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Forcurkey"/>
+                </Key>
+                <Property Name="Forcurkey" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Invoice" sap:label="Invoice flag (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Invoice_ID"/>
+                </Key>
+                <Property Name="Invoice_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="InvoiceText" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="InvoiceText" Type="Edm.String" sap:label="Invoice flag (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="InvoiceResult" sap:label="Invoice flag (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Invoice"/>
+                </Key>
+                <Property Name="Invoice" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Loccurkey" sap:label="Airline Currency (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Loccurkey_ID"/>
+                </Key>
+                <Property Name="Loccurkey_ID" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="LoccurkeyText" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LoccurkeyText" Type="Edm.String" sap:label="Airline Currency (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="LoccurkeyResult" sap:label="Airline Currency (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Loccurkey"/>
+                </Key>
+                <Property Name="Loccurkey" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Reserved" sap:label="Reserved (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Reserved_ID"/>
+                </Key>
+                <Property Name="Reserved_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="ReservedText" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ReservedText" Type="Edm.String" sap:label="Reserved (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ReservedResult" sap:label="Reserved (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Reserved"/>
+                </Key>
+                <Property Name="Reserved" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Smoker" sap:label="Smoker (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Smoker_ID"/>
+                </Key>
+                <Property Name="Smoker_ID" Type="Edm.String" Nullable="false" MaxLength="1" sap:text="SmokerText" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SmokerText" Type="Edm.String" sap:label="Smoker (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="SmokerResult" sap:label="Smoker (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Smoker"/>
+                </Key>
+                <Property Name="Smoker" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Wunit" sap:label="Unit of Measurement (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Wunit_ID"/>
+                </Key>
+                <Property Name="Wunit_ID" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="WunitText" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="WunitText" Type="Edm.String" sap:label="Unit of Measurement (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="WunitResult" sap:label="Unit of Measurement (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Wunit"/>
+                </Key>
+                <Property Name="Wunit" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:text="Carrid_T" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Carrid_T" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Carrid" sap:label="Airline (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carrid_ID"/>
+                </Key>
+                <Property Name="Carrid_ID" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="CarridText" sap:label="Airline" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CarridText" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="CarridResult" sap:label="Airline (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carrid"/>
+                </Key>
+                <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="CarridText" sap:label="Airline" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CarridText" Type="Edm.String" sap:label="Airline (Description)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:label="Agency No." sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:label="Cancelation flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:label="Class" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:label="Sales office" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:label="Customer Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:label="B/P customer" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate" Type="Edm.String" MaxLength="10" sap:text="Fldate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fldate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Invoice" Type="Edm.String" MaxLength="1" sap:label="Invoice flag" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate" Type="Edm.String" MaxLength="10" sap:text="OrderDate_T" sap:label="Posting date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderDate_T" Type="Edm.String" sap:label="Posting date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passbirth" Type="Edm.String" MaxLength="10" sap:text="Passbirth_T" sap:label="DOB of Passenger" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passbirth_T" Type="Edm.String" sap:label="DOB of Passenger (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:label="Reserved" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:label="Smoker" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZC_SBOOKQUERY_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_SBOOKQUERY" EntityType="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Cancelled" EntityType="ZC_SBOOKQUERY_CDS.Cancelled" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CancelledResults" EntityType="ZC_SBOOKQUERY_CDS.CancelledResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Class" EntityType="ZC_SBOOKQUERY_CDS.Class" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ClassResults" EntityType="ZC_SBOOKQUERY_CDS.ClassResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Custtype" EntityType="ZC_SBOOKQUERY_CDS.Custtype" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CusttypeResults" EntityType="ZC_SBOOKQUERY_CDS.CusttypeResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Forcurkey" EntityType="ZC_SBOOKQUERY_CDS.Forcurkey" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ForcurkeyResults" EntityType="ZC_SBOOKQUERY_CDS.ForcurkeyResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Invoice" EntityType="ZC_SBOOKQUERY_CDS.Invoice" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="InvoiceResults" EntityType="ZC_SBOOKQUERY_CDS.InvoiceResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Loccurkey" EntityType="ZC_SBOOKQUERY_CDS.Loccurkey" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="LoccurkeyResults" EntityType="ZC_SBOOKQUERY_CDS.LoccurkeyResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Reserved" EntityType="ZC_SBOOKQUERY_CDS.Reserved" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ReservedResults" EntityType="ZC_SBOOKQUERY_CDS.ReservedResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Smoker" EntityType="ZC_SBOOKQUERY_CDS.Smoker" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="SmokerResults" EntityType="ZC_SBOOKQUERY_CDS.SmokerResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Wunit" EntityType="ZC_SBOOKQUERY_CDS.Wunit" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WunitResults" EntityType="ZC_SBOOKQUERY_CDS.WunitResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Carrid" EntityType="ZC_SBOOKQUERY_CDS.Carrid" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="CarridResults" EntityType="ZC_SBOOKQUERY_CDS.CarridResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="ZC_SBOOKQUERY_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Cancelled" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Cancelation flag ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Cancelled"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Cancelled"/>
+                                    <PropertyValue Property="ValueListProperty" String="Cancelled_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CancelledText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Class" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Class ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Class"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Class"/>
+                                    <PropertyValue Property="ValueListProperty" String="Class_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ClassText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Custtype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="B/P customer ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Custtype"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Custtype"/>
+                                    <PropertyValue Property="ValueListProperty" String="Custtype_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CusttypeText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Forcurkey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Paymnt currency ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Forcurkey"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Forcurkey"/>
+                                    <PropertyValue Property="ValueListProperty" String="Forcurkey_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ForcurkeyText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Invoice" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Invoice flag ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Invoice"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Invoice"/>
+                                    <PropertyValue Property="ValueListProperty" String="Invoice_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="InvoiceText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Loccurkey" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Airline Currency ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Loccurkey"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Loccurkey"/>
+                                    <PropertyValue Property="ValueListProperty" String="Loccurkey_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LoccurkeyText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Reserved" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Reserved ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Reserved"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Reserved"/>
+                                    <PropertyValue Property="ValueListProperty" String="Reserved_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ReservedText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Smoker" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Smoker ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Smoker"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Smoker"/>
+                                    <PropertyValue Property="ValueListProperty" String="Smoker_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SmokerText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Wunit" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measurement ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Wunit"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Wunit"/>
+                                    <PropertyValue Property="ValueListProperty" String="Wunit_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WunitText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_SBOOKQUERY_CDS.ZC_SBOOKQUERYType/Carrid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Airline ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Carrid"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Carrid"/>
+                                    <PropertyValue Property="ValueListProperty" String="Carrid_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CarridText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://VHPUADWDWD01.SAP.ESSA.ID:44380/sap/opu/odata/sap/ZC_SBOOKQUERY_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://VHPUADWDWD01.SAP.ESSA.ID:44380/sap/opu/odata/sap/ZC_SBOOKQUERY_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
