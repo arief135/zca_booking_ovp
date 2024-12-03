@@ -39,36 +39,44 @@
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="cds_zui_sbook" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityType Name="SBookType" sap:label="ZC_SBook" sap:content-version="1">
+            <EntityType Name="SBookType" sap:semantics="aggregate" sap:label="ZC_SBook" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Airline" sap:quickinfo="Airline Code" sap:value-list="standard"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Connection Number" sap:quickinfo="Flight Connection Number"/>
+                <Property Name="Fldate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Flight Date" sap:quickinfo="Flight date"/>
+                <Property Name="Bookid" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Booking number"/>
+                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Customer Number"/>
+                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="B/P customer" sap:quickinfo="Customer type"/>
+                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Smoker"/>
+                <Property Name="Luggweight" Type="Edm.Decimal" Precision="8" Scale="4" sap:aggregation-role="dimension" sap:unit="Wunit" sap:label="Luggage Weight" sap:quickinfo="Weight of Luggage"/>
+                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unit of Measurement" sap:quickinfo="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="Invoice" Type="Edm.Boolean" sap:aggregation-role="dimension" sap:label="Invoice flag"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Flight Class"/>
+                <Property Name="Forcuram" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="dimension" sap:unit="Forcurkey" sap:variable-scale="true" sap:label="Amount" sap:quickinfo="Booking price in foreign currency (dependent on location)"/>
+                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Paymnt currency" sap:quickinfo="Payment currency" sap:semantics="currency-code"/>
+                <Property Name="Loccuram" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="dimension" sap:unit="Loccurkey" sap:variable-scale="true" sap:label="Amount (loc.currncy)" sap:quickinfo="Price of booking in local currency of airline"/>
+                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Airline Currency" sap:quickinfo="Local currency of airline" sap:semantics="currency-code"/>
+                <Property Name="OrderDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Posting date" sap:quickinfo="Booking Date"/>
+                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Sales office" sap:quickinfo="Number of sales office"/>
+                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Agency No." sap:quickinfo="Travel Agency Number"/>
+                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Cancelation flag"/>
+                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Reserved" sap:quickinfo="Reservation flag"/>
+                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:aggregation-role="dimension" sap:label="Passenger Name" sap:quickinfo="Name of the Passenger"/>
+                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:aggregation-role="dimension" sap:label="Form of address"/>
+                <Property Name="Passbirth" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="DOB of Passenger" sap:quickinfo="Date of Birth of a Passenger"/>
+                <Property Name="NumberOfBooking" Type="Edm.Byte" sap:aggregation-role="measure" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZI_SCarr_2Type" sap:label="ZI_SCarr_2" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Carrid"/>
-                    <PropertyRef Name="Connid"/>
-                    <PropertyRef Name="Fldate"/>
-                    <PropertyRef Name="Bookid"/>
                 </Key>
-                <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Airline" sap:quickinfo="Airline Code"/>
-                <Property Name="Connid" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Connection Number" sap:quickinfo="Flight Connection Number"/>
-                <Property Name="Fldate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Flight Date" sap:quickinfo="Flight date"/>
-                <Property Name="Bookid" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Booking number"/>
-                <Property Name="Customid" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Customer Number"/>
-                <Property Name="Custtype" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="B/P customer" sap:quickinfo="Customer type"/>
-                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Smoker"/>
-                <Property Name="Luggweight" Type="Edm.Decimal" Precision="8" Scale="4" sap:unit="Wunit" sap:label="Luggage Weight" sap:quickinfo="Weight of Luggage"/>
-                <Property Name="Wunit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:quickinfo="Unit of Weight" sap:semantics="unit-of-measure"/>
-                <Property Name="Invoice" Type="Edm.Boolean" sap:label="Invoice flag"/>
-                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Flight Class"/>
-                <Property Name="Forcuram" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="Forcurkey" sap:variable-scale="true" sap:label="Amount" sap:quickinfo="Booking price in foreign currency (dependent on location)"/>
-                <Property Name="Forcurkey" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Paymnt currency" sap:quickinfo="Payment currency" sap:semantics="currency-code"/>
-                <Property Name="Loccuram" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="Loccurkey" sap:variable-scale="true" sap:label="Amount (loc.currncy)" sap:quickinfo="Price of booking in local currency of airline"/>
-                <Property Name="Loccurkey" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Airline Currency" sap:quickinfo="Local currency of airline" sap:semantics="currency-code"/>
-                <Property Name="OrderDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting date" sap:quickinfo="Booking Date"/>
-                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Sales office" sap:quickinfo="Number of sales office"/>
-                <Property Name="Agencynum" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Agency No." sap:quickinfo="Travel Agency Number"/>
-                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Cancelation flag"/>
-                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Reserved" sap:quickinfo="Reservation flag"/>
-                <Property Name="Passname" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:quickinfo="Name of the Passenger"/>
-                <Property Name="Passform" Type="Edm.String" MaxLength="15" sap:label="Form of address"/>
-                <Property Name="Passbirth" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="DOB of Passenger" sap:quickinfo="Date of Birth of a Passenger"/>
+                <Property Name="Carrid" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="Carrname" sap:label="Airline" sap:quickinfo="Airline Code"/>
+                <Property Name="Carrname" Type="Edm.String" MaxLength="20" sap:label="Airline" sap:quickinfo="Airline name"/>
+                <Property Name="Currcode" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Airline Currency" sap:quickinfo="Local currency of airline" sap:semantics="currency-code"/>
+                <Property Name="Url" Type="Edm.String" MaxLength="255" sap:label="URL" sap:quickinfo="Airline URL"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
                 <Key>
@@ -308,6 +316,7 @@
                 <EntitySet Name="SAP__PDFFooterSet" EntityType="cds_zui_sbook.SAP__PDFFooter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__ValueHelpSet" EntityType="cds_zui_sbook.SAP__ValueHelp" sap:content-version="1"/>
                 <EntitySet Name="SBook" EntityType="cds_zui_sbook.SBookType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_SCarr_2" EntityType="cds_zui_sbook.ZI_SCarr_2Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__Currencies" EntityType="cds_zui_sbook.SAP__Currency" sap:content-version="1"/>
                 <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zui_sbook.SAP__UnitOfMeasure" sap:content-version="1"/>
                 <EntitySet Name="SAP__MyDocumentDescriptions" EntityType="cds_zui_sbook.SAP__DocumentDescription" sap:content-version="1"/>
@@ -345,8 +354,55 @@
                 </AssociationSet>
             </EntityContainer>
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sbook.SBookType/Carrid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Airline"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_SCarr_2"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Carrid"/>
+                                    <PropertyValue Property="ValueListProperty" String="Carrid"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Carrname"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currcode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Url"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zui_sbook.cds_zui_sbook_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zui_sbook.cds_zui_sbook_Entities/SBook" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>NumberOfBooking</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
             <Annotations Target="cds_zui_sbook.cds_zui_sbook_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">

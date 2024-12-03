@@ -14,7 +14,7 @@ server:
             - /test-resources
           url: https://ui5.sap.com
         backend:
-          - path: /sap
+          - path: /sap/opu/odata/sap/ZUI_SBOOK/
             url: https://vhpuadwdwd01.sap.essa.id:44380
             client: "110"
           - path: /sap/opu/odata/sap/ZC_SBOOKQUERY_CDS
@@ -47,11 +47,19 @@ server:
             metadataPath: ./webapp/localService/ZC_SBOOKQUERY_CDS/metadata.xml
             mockdataPath: ./webapp/localService/ZC_SBOOKQUERY_CDS/mockdata
             generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZUI_SBOOK/
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
+            mockdataRootPath: ./webapp/localService/mainService/mockdata
         annotations:
           - localPath: ./webapp/annotations/annotation.xml
             urlPath: annotations/annotation.xml
           - localPath: ./webapp/localService/ZC_SBOOKQUERY_CDS/ZC_SBOOKQUERY_CDS_Annotation.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_SBOOKQUERY_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/annotations/annotation1.xml
+            urlPath: annotations/annotation1.xml
+          - localPath: ./webapp/localService/mainService/mainService_Annotation.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_SBOOK_VAN',Version='0001')/$value/
 builder:
   customTasks:
     - name: ui5-tooling-transpile-task

@@ -21,7 +21,8 @@
                 "type": "OData",
                 "settings": {
                     "annotations": [
-                        "annotation"
+                        "annotation",
+                        "mainService_Annotation"
                     ],
                     "localUri": "localService/mainService/metadata.xml",
                     "odataVersion": "2.0"
@@ -46,10 +47,25 @@
                 "type": "OData",
                 "settings": {
                     "annotations": [
-                        "ZC_SBOOKQUERY_CDS_Annotation"
+                        "ZC_SBOOKQUERY_CDS_Annotation",
+                        "annotation1"
                     ],
                     "localUri": "localService/ZC_SBOOKQUERY_CDS/metadata.xml",
                     "odataVersion": "2.0"
+                }
+            },
+            "annotation1": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation1.xml",
+                "settings": {
+                    "localUri": "annotations/annotation1.xml"
+                }
+            },
+            "mainService_Annotation": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_SBOOK_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/mainService/mainService_Annotation.xml"
                 }
             }
         }
