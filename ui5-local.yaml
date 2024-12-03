@@ -21,12 +21,6 @@ framework:
     - name: themelib_sap_horizon
 server:
   customMiddleware:
-    - name: fiori-tools-appreload
-      afterMiddleware: compression
-      configuration:
-        port: 35729
-        path: webapp
-        delay: 300
     - name: ui5-tooling-transpile-middleware
       afterMiddleware: compression
       configuration:
@@ -43,16 +37,12 @@ server:
           - path: /sap
             url: https://vhpuadwdwd01.sap.essa.id:44380
             client: '110'
-    - name: sap-fe-mockserver
-      beforeMiddleware: csp
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
       configuration:
-        mountPath: /
-        services:
-          - urlPath: /sap/opu/odata/sap/ZUI_SBOOK
-            metadataPath: ./webapp/localService/metadata.xml
-            mockdataPath: ./webapp/localService/data
-            generateMockData: true
-        annotations: []
+        port: 35729
+        path: webapp
+        delay: 300
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:

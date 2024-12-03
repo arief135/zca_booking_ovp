@@ -13,6 +13,16 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+
+<Annotations Target="cds_zui_sbook.SBookType">
+    <Annotation Term="UI.SelectionFields" >
+        <Collection>
+            <PropertyPath>Carrid</PropertyPath>
+            <PropertyPath>Connid</PropertyPath>
+        </Collection>
+    </Annotation>
+</Annotations>
+
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
